@@ -15,7 +15,8 @@
     .transition(@transition);
     .backface-visibility(hidden);
     .transform-origin(top);
-    .transform(rotateX(90deg));
+    .transform(scale(0,0));
+    .transform-origin(center);
     opacity: 0;
   }
 
@@ -23,7 +24,7 @@
 
 :host([active]) {
   #page-content {
-    .transform(rotateX(0deg));
+    .transform(scale(1,1));
     opacity: 1;
   }
 }
