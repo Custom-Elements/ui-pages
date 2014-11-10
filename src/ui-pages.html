@@ -1,0 +1,20 @@
+<polymer-element name="ui-page" attributes="value active">
+<template>
+  <link rel="stylesheet" type="text/css" href="./ui-page.less">
+  <div id="page-content">
+    <content></content>
+  </div>
+</template>
+<script src="./ui-page.litcoffee"></script>
+</polymer-element>
+
+
+<polymer-element name="ui-pages" attributes="value" on-showing="{{showActive}}">
+<template>
+  <link rel="stylesheet" type="text/css" href="./ui-pages.less">
+  <div id="page-frame" flex auto center-center horizontal layout>
+    <content></content>
+  </div>
+</template>
+<script src="./ui-pages.litcoffee"></script>
+</polymer-element>

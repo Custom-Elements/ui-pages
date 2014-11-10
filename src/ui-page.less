@@ -1,0 +1,29 @@
+@import "../node_modules/ui-styles/variables";
+@import "../node_modules/ui-styles/visual-elements";
+
+:host {
+  display: block;
+  position: relative;
+
+  #page-content {
+    overflow: auto;
+    border: none;
+    outline: none;
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+    .transition(@transition);
+    .backface-visibility(hidden);
+    .transform-origin(top);
+    .transform(rotateX(90deg));
+    opacity: 0;
+  }
+
+}
+
+:host([active]) {
+  #page-content {
+    .transform(rotateX(0deg));
+    opacity: 1;
+  }
+}
