@@ -16,10 +16,10 @@ for an animation event to show the active tab.
 
       valueChanged: ->
         anythingActive = false
-        for tab in @querySelectorAll('ui-page')
-          anythingActive ||= tab.hasAttribute 'active'
-          if tab.value isnt @value
-            tab.removeAttribute 'active'
+        for page in @querySelectorAll('ui-page')
+          anythingActive ||= page.hasAttribute 'active'
+          if page.value isnt @value and page.hasAttribute 'active'
+            page.hide @showActive.bind(@)
         @showActive() unless anythingActive
 
 ##Methods
@@ -27,9 +27,9 @@ for an animation event to show the active tab.
 ##Event Handlers
 
       showActive: ->
-        for tab in @querySelectorAll('ui-page')
-          if tab.value is @value
-            tab.setAttribute 'active', ''
+        for page in @querySelectorAll('ui-page')
+          if page.value is @value
+            page.show()
 
 ##Polymer Lifecycle
 
@@ -42,3 +42,7 @@ for an animation event to show the active tab.
       domReady: ->
 
       detached: ->
+
+      publish:
+        value:
+          reflect: true

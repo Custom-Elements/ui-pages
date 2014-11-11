@@ -2,9 +2,8 @@
 @import "../node_modules/ui-styles/visual-elements";
 
 :host {
-  display: block;
   position: relative;
-
+  display: none;
   #page-content {
     overflow: auto;
     border: none;
@@ -12,18 +11,12 @@
     margin: 0;
     padding: 0;
     cursor: pointer;
-    .transition(@transition);
-    .backface-visibility(hidden);
-    .transform-origin(top);
-    .transform(scale(.85,.85));
-    opacity: 0;
   }
 
 }
 
 :host([active]) {
+  display: flex;
   #page-content {
-    .transform(scale(1,1));
-    opacity: 1;
   }
 }

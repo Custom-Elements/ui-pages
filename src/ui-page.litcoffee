@@ -19,6 +19,24 @@ When present, this is a real visible page.
 
 ##Methods
 
+      hide: (callback) ->
+        anim = @animate [
+          {opacity: 1, transform: 'translateX(0)', offset: 0}
+          {opacity: 0, transform: 'translateX(2%)', offset: 1}
+        ], duration: 300
+        anim.onfinish = =>
+          @removeAttribute 'active'
+          callback?()
+
+      show: (callback) ->
+        @setAttribute 'active', ''
+        anim = @animate [
+          {opacity: 0, transform: 'translateX(2%)', offset: 0}
+          {opacity: 1, transform: 'translateX(0)', offset: 1}
+        ], duration: 300
+        anim.onfinish = =>
+          callback?()
+
 ##Event Handlers
 
 ##Polymer Lifecycle
