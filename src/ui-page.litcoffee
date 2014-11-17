@@ -23,17 +23,18 @@ When present, this is a real visible page.
         anim = @animate [
           {opacity: 1, transform: 'translateX(0)', offset: 0}
           {opacity: 0, transform: 'translateX(2%)', offset: 1}
-        ], duration: 300
+        ], duration: 300, easing: "0.2s cubic-bezier(0.4, 0.0, 1, 1)"
         anim.onfinish = =>
           @removeAttribute 'active'
           callback?()
 
       show: (callback) ->
+        return if @hasAttribute 'active'
         @setAttribute 'active', ''
         anim = @animate [
           {opacity: 0, transform: 'translateX(2%)', offset: 0}
           {opacity: 1, transform: 'translateX(0)', offset: 1}
-        ], duration: 300
+        ], duration: 300, easing: "0.2s cubic-bezier(0.4, 0.0, 1, 1)"
         anim.onfinish = =>
           callback?()
 
