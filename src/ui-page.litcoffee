@@ -2,7 +2,7 @@
 This is a single page in a set of `ui-pages`. It doesn't really have
 any behavior of its own, you just set it active in a set.
 
-
+    require 'ui-styles/animations'
     Polymer 'ui-page',
 
 ##Events
@@ -20,22 +20,15 @@ When present, this is a real visible page.
 ##Methods
 
       hide: (callback) ->
-        anim = @animate [
-          {opacity: 1, transform: 'translateX(0)', offset: 0}
-          {opacity: 0, transform: 'translateX(2%)', offset: 1}
-        ], duration: 300, easing: "0.2s cubic-bezier(0.4, 0.0, 1, 1)"
-        anim.onfinish = =>
+        return if not @hasAttribute 'active'
+        @fadeOut =>
           @removeAttribute 'active'
           callback?()
 
       show: (callback) ->
         return if @hasAttribute 'active'
         @setAttribute 'active', ''
-        anim = @animate [
-          {opacity: 0, transform: 'translateX(2%)', offset: 0}
-          {opacity: 1, transform: 'translateX(0)', offset: 1}
-        ], duration: 300, easing: "0.2s cubic-bezier(0.4, 0.0, 1, 1)"
-        anim.onfinish = =>
+        @fadeIn =>
           callback?()
 
 ##Event Handlers
