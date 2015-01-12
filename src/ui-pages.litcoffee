@@ -16,7 +16,7 @@ for an animation event to show the active tab.
 
       valueChanged: ->
         anythingActive = false
-        for page in @querySelectorAll('ui-page')
+        for page in @querySelectorAll(':scope > ui-page')
           anythingActive ||= page.hasAttribute 'active'
           if page.value isnt @value and page.hasAttribute 'active'
             page.hide @showActive.bind(@)
@@ -27,7 +27,7 @@ for an animation event to show the active tab.
 ##Event Handlers
 
       showActive: ->
-        for page in @querySelectorAll('ui-page')
+        for page in @querySelectorAll(':scope > ui-page')
           if page.value is @value
             page.show()
 
