@@ -5,6 +5,8 @@
     Polymer 'ui-pages',
 
 ##Events
+###onpage
+Fired any time we get to a page.
 
 ##Attributes and Change Handlers
 ###value
@@ -29,7 +31,8 @@ for an animation event to show the active tab.
       showActive: ->
         for page in @querySelectorAll(':scope > ui-page')
           if page.value is @value
-            page.show()
+            page.show =>
+              @fire 'onpage'
 
 ##Polymer Lifecycle
 

@@ -20,13 +20,17 @@ When present, this is a real visible page.
 ##Methods
 
       hide: (callback) ->
-        return if not @hasAttribute 'active'
+        if not @hasAttribute 'active'
+          callback?()
+          return
         @fadeOut =>
           @removeAttribute 'active'
           callback?()
 
       show: (callback) ->
-        return if @hasAttribute 'active'
+        if @hasAttribute 'active'
+          callback?()
+          return
         @setAttribute 'active', ''
         @fadeIn =>
           callback?()
@@ -40,9 +44,6 @@ When present, this is a real visible page.
       ready: ->
 
       attached: ->
-        @addEventListener 'transitionend', =>
-          if not @active
-            @fire "showing"
 
       domReady: ->
 
